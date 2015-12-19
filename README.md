@@ -1,11 +1,9 @@
-ZendSkeletonApplication
-=======================
+Zend2 Cooking Application
+=========================
 
 Introduction
 ------------
-This is a simple, skeleton application using the ZF2 MVC layer and module
-systems. This application is meant to be used as a starting place for those
-looking to get their feet wet with ZF2.
+This is my Zend Framework 2 Playground and this is the README.md from Zf2 :)
 
 Installation using Composer
 ---------------------------
