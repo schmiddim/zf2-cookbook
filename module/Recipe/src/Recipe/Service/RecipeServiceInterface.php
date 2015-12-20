@@ -10,7 +10,7 @@ interface RecipeServiceInterface
 	/**
 	 * @return Recipe
 	 */
-	public function findOneById($id);
+	public function findById($id);
 
 	/**
 	 * @return array

@@ -2,7 +2,7 @@
 namespace Recipe\Doctrine\Model;
 
 use Doctrine\ORM\Mapping as ORM;
-
+use Doctrine\ORM\Mapping\ManyToMany;
 /**
  * Class Recipe
  * @ORM\Entity
@@ -42,6 +42,30 @@ class Recipe
 	 * @ORM\Column(type="datetime", nullable=true);
 	 */
 	protected $createdAt;
+	/**
+	 * @ORM\Column(type="text", nullable=true);
+	 * @var string
+	 */
+	protected $calories;
+
+	/**
+	 * @ORM\Column(type="text", nullable=true);
+	 * @var string
+	 */
+	protected $level;
+
+	/**
+	 * @ORM\Column(type="integer", nullable=true);
+	 * @var string
+	 */
+	protected $totalTime;
+
+
+	/**
+	 * @ManyToMany(targetEntity="Recipe\Doctrine\Model\Ingredients")
+
+	 */
+	protected $ingredients = array();
 
 	public function __construct()
 	{
@@ -128,6 +152,69 @@ class Recipe
 		$this->instructions = $instructions;
 	}
 
+	/**
+	 * @return string
+	 */
+	public function getCalories()
+	{
+		return $this->calories;
+	}
+
+	/**
+	 * @param string $calories
+	 */
+	public function setCalories($calories)
+	{
+		$this->calories = $calories;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getLevel()
+	{
+		return $this->level;
+	}
+
+	/**
+	 * @param string $level
+	 */
+	public function setLevel($level)
+	{
+		$this->level = $level;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getTotalTime()
+	{
+		return $this->totalTime;
+	}
+
+	/**
+	 * @param string $totalTime
+	 */
+	public function setTotalTime($totalTime)
+	{
+		$this->totalTime = $totalTime;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getIngredients()
+	{
+		return $this->ingredients;
+	}
+
+	/**
+	 * @param mixed $ingredients
+	 */
+	public function setIngredients($ingredients)
+	{
+		$this->ingredients = $ingredients;
+	}
 
 
 }

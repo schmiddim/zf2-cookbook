@@ -1,7 +1,7 @@
 <?php
 /**
  * @var \Recipe\Doctrine\Model\Recipe $recipe
-*/
+ */
 ?>
 <div class="jumbotron">
 	<h1><?php echo $recipe->getTitle() ?></h1>
@@ -12,9 +12,16 @@
 		 alt="Suppe">
 	<p>
 	<ul class="list-group">
-		<li class="list-group-item">Total Time: ca. 10 Min.</li>
-		<li class="list-group-item">Difficult: normal</li>
-		<li class="list-group-item">Calories p. P.: n/a</li>
+		<li class="list-group-item">Total Time: ca. <?php echo $recipe->getTotalTime() ?> Min.</li>
+		<li class="list-group-item">Difficult: <?php echo $recipe->getLevel(); ?></li>
+		<li class="list-group-item">Calories p. P.: <?php
+			$calories = $recipe->getCalories();
+			if (null === $calories) {
+				echo 'n/a';
+			} else {
+				echo $calories;
+			}
+			?></li>
 	</ul>
 	</p>
 
@@ -52,39 +59,18 @@
 					</tr>
 					</thead>
 					<tbody>
-					<tr>
-						<td>100 g</td>
-						<td> Bärlauch, frisch</td>
-					</tr>
+					<?php foreach ($recipe->getIngredients() as $ingredient): ?>
+						<?php
+						/**
+						 * @var \Recipe\Doctrine\Model\Ingredients $ingredient
+						 */
+						?>
+						<tr>
+							<td><?php echo $ingredient->getName() ?> </td>
+							<td><?php echo $ingredient->getValue() ?> </td>
+						</tr>
 
-					<tr>
-						<td>5</td>
-						<td> m.-große Kartoffel(n), geschält und in Stücke geschnitten</td>
-					</tr>
-					<tr>
-						<td>1</td>
-						<td>Zwiebel</td>
-					</tr>
-					<tr>
-						<td>1 Liter</td>
-						<td>Gemüsebrühe</td>
-					</tr>
-					<tr>
-						<td>50ml</td>
-						<td>Sahne</td>
-					</tr>
-					<tr>
-						<td>-</td>
-						<td>Salz</td>
-					</tr>
-					<tr>
-						<td>-</td>
-						<td>Pfeffer</td>
-					</tr>
-					<tr>
-						<td>2EL</td>
-						<td>Butter</td>
-					</tr>
+					<?php endforeach; ?>
 					</tbody>
 				</table>
 

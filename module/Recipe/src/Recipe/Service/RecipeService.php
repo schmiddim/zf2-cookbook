@@ -3,7 +3,7 @@
 namespace Recipe\Service;
 
 use Recipe\Doctrine\Model\Recipe;
-use Recipe\Doctrine\Service\RecipeServiceInterface;
+use Recipe\Doctrine\Service\RecipeServiceInterface as DoctrineRecipeServiceInterface;
 use Zend\ServiceManager\ServiceLocatorAwareInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
@@ -16,20 +16,17 @@ class RecipeService implements RecipeServiceInterface, ServiceLocatorAwareInterf
 	protected $serviceLocator;
 
 
+
 	/**
-	 * @param $id
 	 * @return Recipe
 	 */
 	public function findById($id)
 	{
 		/**
-		 * @var RecipeServiceInterface $service
+		 * @var DoctrineRecipeServiceInterface $service
 		 */
 		$service = $this->getServiceLocator()->get('Recipe\Doctrine\Service\RecipeServiceInterface');
-		return $service->findById($id);
-
-
-	}
+		return $service->findById($id);	}
 
 
 	/**
