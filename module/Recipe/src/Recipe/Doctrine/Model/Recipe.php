@@ -62,7 +62,7 @@ class Recipe
 
 
 	/**
-	 * @ManyToMany(targetEntity="Recipe\Doctrine\Model\Ingredients")
+	 * @ManyToMany(targetEntity="Recipe\Doctrine\Model\Ingredient")
 
 	 */
 	protected $ingredients = array();
