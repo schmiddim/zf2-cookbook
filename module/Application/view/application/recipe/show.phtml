@@ -38,7 +38,7 @@
 			<div class="panel-body">
 				<p><?php echo $recipe->getInstructions() ?></p>
 				<p><a class="btn btn-success pull-right"
-					  href="http://www.chefkoch.de/rezepte/1344851239268930/Exzellente-Baerlauchsuppe.html"
+					  href="<?php echo $recipe->getSource()?>"
 					  target="_blank"><?php echo $this->translate('Source') ?> &raquo;</a></p>
 			</div>
 		</div>

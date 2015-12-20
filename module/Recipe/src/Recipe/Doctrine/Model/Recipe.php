@@ -3,6 +3,7 @@ namespace Recipe\Doctrine\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToMany;
+
 /**
  * Class Recipe
  * @ORM\Entity
@@ -62,10 +63,16 @@ class Recipe
 
 
 	/**
+	 *
 	 * @ManyToMany(targetEntity="Recipe\Doctrine\Model\Ingredient")
-
 	 */
 	protected $ingredients = array();
+
+	/**
+	 * @ORM\Column(type="string", nullable=true);
+	 * @var string
+	 */
+	protected $source;
 
 	public function __construct()
 	{
@@ -214,6 +221,22 @@ class Recipe
 	public function setIngredients($ingredients)
 	{
 		$this->ingredients = $ingredients;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getSource()
+	{
+		return $this->source;
+	}
+
+	/**
+	 * @param string $source
+	 */
+	public function setSource($source)
+	{
+		$this->source = $source;
 	}
 
 

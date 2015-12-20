@@ -27,6 +27,11 @@ class RecipeController extends AbstractActionController
 
 	public function listAction()
 	{
+		/**
+		 * @var RecipeServiceInterface $recipeService
+		 */
+		$recipeService = $this->getServiceLocator()->get('Recipe\Service\RecipeServiceInterface');
 
+		return new ViewModel(array('recipes' => $recipeService->findAll()));
 	}
 }

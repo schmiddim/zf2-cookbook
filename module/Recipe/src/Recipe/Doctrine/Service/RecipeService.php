@@ -16,7 +16,7 @@ class RecipeService extends AbstractDoctrineService implements RecipeServiceInte
 
 	public function findAll()
 	{
-		// TODO: Implement findAll() method.
+	return $this->getRepository()->findAll();
 	}
 
 	/**
