@@ -4,6 +4,8 @@
 namespace Recipe\Doctrine\Service;
 
 
+use Recipe\Doctrine\Model\Recipe;
+
 interface RecipeServiceInterface
 {
 
@@ -13,4 +15,9 @@ interface RecipeServiceInterface
 	public function findAll();
 
 
+	/**
+	 * @param $id
+	 * @return Recipe
+	 */
+	public function findById($id);
 }

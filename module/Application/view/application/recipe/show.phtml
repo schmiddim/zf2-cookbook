@@ -1,5 +1,10 @@
+<?php
+/**
+ * @var \Recipe\Doctrine\Model\Recipe $recipe
+*/
+?>
 <div class="jumbotron">
-	<h1><?php echo sprintf('Bärlauch%ssuppe%s', '<span class="zf-green">', '</span>') ?></h1>
+	<h1><?php echo $recipe->getTitle() ?></h1>
 	<p><?php echo sprintf($this->translate('Schmeckt Lecker')) ?></p>
 	<!--
 	-->
@@ -24,13 +29,7 @@
 				<h3 class="panel-title"><?php echo $this->translate('Instructions') ?></h3>
 			</div>
 			<div class="panel-body">
-				<p>Die Zwiebel schälen und in einer Pfanne mit der Butter anschwitzen, bis sie goldgelb ist.
-					Mit der Brühe aufgießen und Kartoffeln sowie Bärlauch beifügen (dabei vier Blätter Bärlauch für die
-					Garnitur zurück behalten). Mit Salz und Pfeffer abschmecken und langsam köcheln lassen, bis die
-					Kartoffeln weich sind.
-					Dann die Suppe mit einem Pürierstab mischen und zum Schluss die Sahne unterheben.
-					Nochmals kurz aufkochen lassen und heiß mit dem Bärlauch garniert servieren.
-				</p>
+				<p><?php echo $recipe->getInstructions() ?></p>
 				<p><a class="btn btn-success pull-right"
 					  href="http://www.chefkoch.de/rezepte/1344851239268930/Exzellente-Baerlauchsuppe.html"
 					  target="_blank"><?php echo $this->translate('Source') ?> &raquo;</a></p>

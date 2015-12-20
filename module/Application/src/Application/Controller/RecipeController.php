@@ -5,21 +5,28 @@ namespace Application\Controller;
 
 
 use Recipe\Doctrine\Model\Recipe;
+use Recipe\Service\RecipeServiceInterface;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 
 class RecipeController extends AbstractActionController
 {
 
-	public function showAction(){
+	public function showAction()
+	{
 
-	$recipeService=	$this->getServiceLocator()->get('Recipe\Doctrine\Service\RecipeServiceInterface');
-		$recipe = new Recipe();
-		return new ViewModel();
+		$id = $this->params('id');
+		/**
+		 * @var RecipeServiceInterface $recipeService
+		 */
+		$recipeService = $this->getServiceLocator()->get('Recipe\Service\RecipeServiceInterface');
+		$recipe = $recipeService->findById($id);
+		return new ViewModel(array('recipe' => $recipe));
 
 	}
 
-	public function listAction(){
+	public function listAction()
+	{
 
 	}
 }

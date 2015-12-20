@@ -5,6 +5,8 @@ return array(
 		'invokables' => array(
 			'Recipe\Doctrine\Service\RecipeServiceInterface' =>
 				Recipe\Doctrine\Service\RecipeService::class,
+			'Recipe\Service\RecipeServiceInterface' =>
+				Recipe\Service\RecipeService::class,
 		)
 	),
 	'doctrine' => array(
