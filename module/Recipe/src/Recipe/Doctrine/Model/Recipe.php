@@ -3,7 +3,8 @@ namespace Recipe\Doctrine\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToMany;
-
+use Doctrine\ORM\Mapping\ManyToOne as ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn as JoinColumn;
 /**
  * Class Recipe
  * @ORM\Entity
@@ -61,7 +62,12 @@ class Recipe
 	 */
 	protected $totalTime;
 
-
+	/**
+	 * @ManyToOne(targetEntity="\Recipe\Doctrine\Model\User", inversedBy="recipes")
+	 * @JoinColumn(name="user_id", referencedColumnName="user_id")
+	 * @var User
+	 */
+	protected $user;
 	/**
 	 *
 	 * @ManyToMany(targetEntity="Recipe\Doctrine\Model\Ingredient")
@@ -238,6 +244,24 @@ class Recipe
 	{
 		$this->source = $source;
 	}
+
+	/**
+	 * @return mixed
+	 */
+	public function getUser()
+	{
+		return $this->user;
+	}
+
+	/**
+	 * @param mixed $user
+	 */
+	public function setUser($user)
+	{
+		$this->user = $user;
+	}
+
+
 
 
 }

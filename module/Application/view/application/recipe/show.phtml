@@ -22,6 +22,8 @@
 				echo $calories;
 			}
 			?></li>
+
+		<li class="list-group-item">From User <strong><?php echo $recipe->getUser()->getDisplayName() ?></strong></li>
 	</ul>
 	</p>
 
@@ -38,7 +40,7 @@
 			<div class="panel-body">
 				<p><?php echo $recipe->getInstructions() ?></p>
 				<p><a class="btn btn-success pull-right"
-					  href="<?php echo $recipe->getSource()?>"
+					  href="<?php echo $recipe->getSource() ?>"
 					  target="_blank"><?php echo $this->translate('Source') ?> &raquo;</a></p>
 			</div>
 		</div>
