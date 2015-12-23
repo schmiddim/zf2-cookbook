@@ -10,6 +10,12 @@
 namespace Application;
 
 return array(
+
+    'filters' => array(
+        'invokables'=> array(
+            'newRecipeFilter' => 'Application\Filter\NewRecipeFilter',
+        ),
+    ),
     'router' => array(
         'routes' => array(
             'home' => array(

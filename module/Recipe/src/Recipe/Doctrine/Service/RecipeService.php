@@ -13,6 +13,11 @@ class RecipeService extends AbstractDoctrineService implements RecipeServiceInte
 	 */
 	protected $serviceLocator;
 
+	public function create(Recipe $recipe)
+	{
+		// TODO: Implement create() method.
+	}
+
 
 	public function findAll()
 	{
