@@ -1,0 +1,57 @@
+<?php
+
+?>
+<script>
+
+	function duplicateIngredient(){
+	7//	console.log("sd");
+	//	jQuery('.ingredient').append(jQuery('.ingredient').clone().find("input").val("").end());
+//		jQuery('.duplicate').append(jQuery('.ingredient').clone().find("input").val(""))
+		jQuery('.duplicate').parent().prepend(jQuery('.ingredient').clone().find("input").val(""));
+	}
+
+
+</script>
+
+	<h1>Create New Recipe</h1>
+
+<div class="row">
+<div class="container">
+	<h2>Enter some Details...</h2>
+	<form role="form" method="post" class="new-recipe">
+		<div class="form-group">
+			<lingredientabel for="title">Title:</lingredientabel>
+			<input type="text" class="form-control" id="title" name="title" placehnew-recipeolder="Enter title">
+		</div>
+		<div class="form-group">
+			<label for="totalTime">Total Time:</label>
+			<input type="text" class="form-control" id="totalTime" name="totalTime" placeholder="Enter calories">
+		</div>
+		<div class="form-group">
+			<label for="calories">Calories:</label>
+			<input type="text" class="form-control" id="calories" name="calories" placeholder="Enter calories">
+		</div>
+		<div class="form-group">
+			<label for="source">Source of the Recipe:</label>
+			<input type="text" class="form-control" id="source" name="source" placeholder="Enter source">
+		</div>
+		<div class="form-group">
+			<textarea class="form-control" rows="5" id="instructions" name="instructions"></textarea>
+		</div>
+
+		<h3>Ingredients</h3>
+		<div class="form-group ingredient">
+			<label for="quantity">Ingredient:</label>
+			<input type="text" class="form-control" id="quantity[]" name="quantity[]" placeholder="quantity">
+			<input type="text" class="form-control" id="item[]" name="item[]" placeholder="item">
+		</div>
+		<div class="form-group">
+
+		<button type="Button" class="btn btn-info duplicate" onclick="duplicateIngredient()">Add Ingredient</button>
+			</div>
+		<button type="submit" class="btn btn-default">Submit</button>
+	</form>
+</div>
+
+
+</div>
