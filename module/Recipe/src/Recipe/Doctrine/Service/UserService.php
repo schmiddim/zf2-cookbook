@@ -11,27 +11,11 @@ class UserService extends AbstractDoctrineService implements ServiceLocatorAware
 
     protected $serviceLocator;
 
-    public function findAll(){
-        return $this->getRepository()->findAll();
-
-    }
-
-    /**
-     * @param $id
-     * @return Recipe
-     */
-    public function findById($id)
+    public function __construct()
     {
-        return $this->getRepository()->find($id);
+
+        $this->setRepositoryIdentifier('Recipe\Doctrine\Model\User');
     }
 
-    /**
-     * @return \Doctrine\ORM\EntityRepository
-     */
-
-    public function getRepository(){
-        return $this->getEntityManager()->getRepository('Recipe\Doctrine\Model\User');
-
-    }
 
 }

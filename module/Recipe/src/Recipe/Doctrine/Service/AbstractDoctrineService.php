@@ -9,37 +9,80 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 
 abstract class AbstractDoctrineService implements ServiceLocatorAwareInterface
 {
-	/**
-	 * @var ServiceLocatorInterface
-	 */
-	protected $serviceLocator;
+    /**
+     * @var ServiceLocatorInterface
+     */
+    protected $serviceLocator;
 
 
-	public function findAll()
-	{
-		// TODO: Implement findAll() method.
-	}
+    /**
+     * @var string
+     */
+    protected $repositoryIdentifier;
 
-	public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
-	{
-		$this->serviceLocator = $serviceLocator;
-	}
+    public function findAll()
+    {
+        return $this->getRepository()->findAll();
+
+    }
+
+    /**
+     * @param $id
+     * @return Recipe
+     */
+    public function findById($id)
+    {
+        return $this->getRepository()->find($id);
+    }
+
+    public function setServiceLocator(ServiceLocatorInterface $serviceLocator)
+    {
+        $this->serviceLocator = $serviceLocator;
+    }
 
 
-	/**
-	 * @return ServiceLocatorInterface
-	 */
-	public function getServiceLocator()
-	{
-		return $this->serviceLocator;
-	}
+    /**
+     * @return ServiceLocatorInterface
+     */
+    public function getServiceLocator()
+    {
+        return $this->serviceLocator;
+    }
 
-	/**
-	 * @return  \Doctrine\ORM\EntityManager
-	 */
-	public function getEntityManager()
-	{
-		return $this->getServiceLocator()
-			->get('doctrine.entitymanager.orm_default');
-	}
+    /**
+     * @return  \Doctrine\ORM\EntityManager
+     */
+    public function getEntityManager()
+    {
+        return $this->getServiceLocator()
+            ->get('doctrine.entitymanager.orm_default');
+    }
+
+    /**
+     * @return string
+     */
+    protected function getRepositoryIdentifier()
+    {
+        return $this->repositoryIdentifier;
+    }
+
+    /**
+     * @param string $repositoryIdentifier
+     */
+    protected function setRepositoryIdentifier($repositoryIdentifier)
+    {
+        $this->repositoryIdentifier = $repositoryIdentifier;
+    }
+
+
+    /**
+     * @return \Doctrine\ORM\EntityRepository
+     */
+    public function getRepository()
+    {
+        return $this->getEntityManager()->getRepository($this->getRepositoryIdentifier());
+
+    }
+
+
 }

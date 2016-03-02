@@ -9,15 +9,15 @@ use Recipe\Doctrine\Model\Recipe;
 interface RecipeServiceInterface
 {
 
-	/**
-	 * @return array
-	 */
-	public function findAll();
+    /**
+     * @return array
+     */
+    public function findAll();
 
 
-	/**
-	 * @param $id
-	 * @return Recipe
-	 */
-	public function findById($id);
+    /**
+     * @param $id
+     * @return Recipe
+     */
+    public function findById($id);
 }
