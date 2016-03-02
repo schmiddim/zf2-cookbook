@@ -1,13 +1,9 @@
-<?php
-/**
- * @var \Recipe\Doctrine\Model\User $users
- */
-?>
 <div class="jumbotron">
     <h1>All Users</h1>
 </div>
 <div class="row">
     <?php foreach ($users as $user): ?>
+        <?php /* @var \Recipe\Doctrine\Model\User $user*/?>
         <div class="col-sm-6 col-md-4">
             <div class="thumbnail">
                 <a href="/user/show/<?php echo $user->getId()?>">
