@@ -18,14 +18,30 @@ class User extends \ZfcUser\Entity\User implements UserInterface
 {
 
 
-	/**
-A unidirectional one-to-many association can be mapped through a join table. From Doctrine’s point of view, it is simply mapped as a unidirectional many-to-many whereby a unique constraint on one of the join columns enforces the one-to-many cardinality.
+    /**
+     * A unidirectional one-to-many association can be mapped through a join table. From Doctrine’s point of view, it is simply mapped as a unidirectional many-to-many whereby a unique constraint on one of the join columns enforces the one-to-many cardinality.
+     *
+     * The following example sets up such a unidirectional one-to-many association:
+     * @OneToMany(targetEntity="\Recipe\Doctrine\Model\Recipe", mappedBy="user")
+     *
+     */
+    protected $recipes = array();
 
-The following example sets up such a unidirectional one-to-many association:
+    /**
+     * @return mixed
+     */
+    public function getRecipes()
+    {
+        return $this->recipes;
+    }
+
+    /**
+     * @param mixed $recipes
+     */
+    public function setRecipes($recipes)
+    {
+        $this->recipes = $recipes;
+    }
 
 
-	 * @OneToMany(targetEntity="\Recipe\Doctrine\Model\Recipe", mappedBy="user")
-	 *
-	 */
-	protected $recipes = array();
 }

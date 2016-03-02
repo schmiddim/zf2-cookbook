@@ -1,19 +1,16 @@
 <?php
-
+/**
+ * @var \Recipe\Doctrine\Model\Recipe $recipe
+ */
 ?>
 <div class="jumbotron">
 	<h1>All Recipes</h1>
 </div>
 <div class="row">
 	<?php foreach ($recipes as $recipe): ?>
-		<?php
-		/**
-		 * @var \Recipe\Doctrine\Model\Recipe $recipe
-		 */
-		?>
 		<div class="col-sm-6 col-md-4">
 			<div class="thumbnail">
-				<a href="/application/recipe/show/<?php echo $recipe->getId()?>">
+				<a href="/recipe/show/<?php echo $recipe->getId()?>">
 					<img src="<?php echo $this->basePath('img/suppe.jpeg') ?>" alt="...">
 					<div class="caption">
 						<h3><?php echo $recipe->getTitle() ?></h3>

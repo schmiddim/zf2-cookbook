@@ -10,4 +10,5 @@ return array(
 					'user' => 'root',
 					'password' => '',
 					'dbname' => 'zf2-cooking',
+					'charset' => 'utf8mb4',
 				)))));

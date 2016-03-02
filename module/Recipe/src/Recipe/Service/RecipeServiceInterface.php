@@ -8,6 +8,7 @@ interface RecipeServiceInterface
 {
 
 	/**
+	 * @param int $id
 	 * @return Recipe
 	 */
 	public function findById($id);

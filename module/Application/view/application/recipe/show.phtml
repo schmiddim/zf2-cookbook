@@ -4,81 +4,92 @@
  */
 ?>
 <div class="jumbotron">
-	<h1><?php echo $recipe->getTitle() ?></h1>
-	<p><?php echo sprintf($this->translate('Schmeckt Lecker')) ?></p>
-	<!--
-	-->
-	<img class="img-responsive" height="10" src="<?php echo $this->basePath('img/suppe.jpeg') ?>"
-		 alt="Suppe">
-	<p>
-	<ul class="list-group">
-		<li class="list-group-item">Total Time: ca. <?php echo $recipe->getTotalTime() ?> Min.</li>
-		<li class="list-group-item">Difficult: <?php echo $recipe->getLevel(); ?></li>
-		<li class="list-group-item">Calories p. P.: <?php
-			$calories = $recipe->getCalories();
-			if (null === $calories) {
-				echo 'n/a';
-			} else {
-				echo $calories;
-			}
-			?></li>
+    <h1><?php echo $recipe->getTitle() ?></h1>
+    <!--
+    <img class="img-responsive" height="10" src="<?php echo $this->basePath('img/suppe.jpeg') ?>"
+         alt="Suppe">
+    <p>
+    -->
+    <ul class="list-group">
+        <li class="list-group-item">Total Time: ca. <?php echo $recipe->getTotalTime() ?> Min.</li>
+        <li class="list-group-item">Difficult: <?php echo $recipe->getLevel(); ?></li>
+        <li class="list-group-item">Calories p. P.: <?php
+            $calories = $recipe->getCalories();
+            if (null === $calories) {
+                echo 'n/a';
+            } else {
+                echo $calories;
+            }
+            ?></li>
+        <li class="list-group-item">
+            <a href="<?php echo $recipe->getSource() ?>">Source</a>
+        </li>
 
-		<li class="list-group-item">From User <strong><?php echo $recipe->getUser()->getDisplayName() ?></strong></li>
-	</ul>
-	</p>
+        <?php $user = $recipe->getUser()?>
+        <?php if (null !==$user): ?>
+            <li class="list-group-item">From User
+                <a href="/user/show/<?php echo $user->getId()?>">
+                    <strong><?php echo $recipe->getUser()->getDisplayName() ?></strong>
+                </a>
+            </li>
+        <?php else: ?>
+            <li class="list-group-item">From a unknown User</li>
+
+        <?php endif ?>
+    </ul>
 
 
 </div>
 
 <div class="row">
 
-	<div class="col-md-8">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title"><?php echo $this->translate('Instructions') ?></h3>
-			</div>
-			<div class="panel-body">
-				<p><?php echo $recipe->getInstructions() ?></p>
-				<p><a class="btn btn-success pull-right"
-					  href="<?php echo $recipe->getSource() ?>"
-					  target="_blank"><?php echo $this->translate('Source') ?> &raquo;</a></p>
-			</div>
-		</div>
-	</div>
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Instructions') ?></h3>
+            </div>
+            <div class="panel-body">
+                <p><?php echo $recipe->getInstructions() ?></p>
+                <p><a class="btn btn-success pull-right"
+                      href="<?php echo $recipe->getSource() ?>"
+                      target="_blank"><?php echo $this->translate('Source') ?> &raquo;</a></p>
+            </div>
+        </div>
+    </div>
 
-	<div class="col-md-4">
-		<div class="panel panel-default">
-			<div class="panel-heading">
-				<h3 class="panel-title"><?php echo $this->translate('Ingredient') ?></h3>
-			</div>
-			<div class="panel-body">
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><?php echo $this->translate('Ingredient') ?></h3>
+            </div>
+            <div class="panel-body">
 
-				<table class="table table-hover">
-					<thead>
-					<tr>
-						<th>Quantity</th>
-						<th>Item</th>
-					</tr>
-					</thead>
-					<tbody>
-					<?php foreach ($recipe->getIngredients() as $ingredient): ?>
-						<?php
-						/**
-						 * @var \Recipe\Doctrine\Model\Ingredient $ingredient
-						 */
-						?>
-						<tr>
-							<td><?php echo $ingredient->getName() ?> </td>
-							<td><?php echo $ingredient->getValue() ?> </td>
-						</tr>
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Quantity</th>
+                        <th>Item</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($recipe->getIngredients() as $ingredient): ?>
+                        <?php
+                        /**
+                         * @var \Recipe\Doctrine\Model\Ingredient $ingredient
+                         */
+                        ?>
+                        <tr>
+                            <td><?php echo $ingredient->getName() ?> </td>
+                            <td><?php echo $ingredient->getValue() ?> </td>
+                        </tr>
 
-					<?php endforeach; ?>
-					</tbody>
-				</table>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
 
-			</div>
-		</div>
-	</div>
+            </div>
+        </div>
+    </div>
 
 
 </div>
