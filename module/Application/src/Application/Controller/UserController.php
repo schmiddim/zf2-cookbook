@@ -23,7 +23,7 @@ class UserController extends AbstractActionController
         /**
          * @var UserServiceInterface $userService
          */
-        $userService = $this->getServiceLocator()->get('Recipe\Service\User\UserServiceInterface');
+        $userService = $this->getServiceLocator()->get(\Recipe\Doctrine\Service\UserServiceInterface::class);
         $user = $userService->findById($id);
         return new ViewModel(array('user' => $user));
     }
@@ -33,7 +33,7 @@ class UserController extends AbstractActionController
         /**
          * @var UserServiceInterface $userService
          */
-        $userService = $this->getServiceLocator()->get('Recipe\Service\User\UserServiceInterface');
+        $userService = $this->getServiceLocator()->get(\Recipe\Doctrine\Service\UserServiceInterface::class);
 
         return new ViewModel(['users' => $userService->findAll()]);
     }

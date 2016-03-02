@@ -4,11 +4,7 @@ return array(
         'invokables' => array(
             'Recipe\Doctrine\Service\RecipeServiceInterface' =>
                 Recipe\Doctrine\Service\RecipeService::class,
-            'Recipe\Service\RecipeServiceInterface' =>
-                Recipe\Service\RecipeService::class,
 
-            'Recipe\Service\User\UserServiceInterface' =>
-                Recipe\Service\User\UserService::class,
             Recipe\Doctrine\Service\UserServiceInterface::class =>
                 Recipe\Doctrine\Service\UserService::class
 

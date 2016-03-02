@@ -25,10 +25,10 @@
             <a href="<?php echo $recipe->getSource() ?>">Source</a>
         </li>
 
-        <?php $user = $recipe->getUser()?>
-        <?php if (null !==$user): ?>
+        <?php $user = $recipe->getUser() ?>
+        <?php if (null !== $user): ?>
             <li class="list-group-item">From User
-                <a href="/user/show/<?php echo $user->getId()?>">
+                <a href="/user/show/<?php echo $user->getId() ?>">
                     <strong><?php echo $recipe->getUser()->getDisplayName() ?></strong>
                 </a>
             </li>

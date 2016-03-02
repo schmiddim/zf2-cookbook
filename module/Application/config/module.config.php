@@ -94,7 +94,6 @@ return array(
         ),
     ),
 
-    //@todo refactor this
     'navigation' => array(
         'default' => array(
             'recipeList' => array(
