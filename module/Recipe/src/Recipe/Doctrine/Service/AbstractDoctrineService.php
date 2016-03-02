@@ -18,7 +18,7 @@ abstract class AbstractDoctrineService implements ServiceLocatorAwareInterface
     /**
      * @var string
      */
-    protected $repositoryIdentifier;
+    protected $repositoryIdentifier = null;
 
     public function findAll()
     {
@@ -63,6 +63,9 @@ abstract class AbstractDoctrineService implements ServiceLocatorAwareInterface
      */
     protected function getRepositoryIdentifier()
     {
+        if(null === $this->repositoryIdentifier) {
+            throw new \RuntimeException('Set Repository Identifier in inherited class!');
+        }
         return $this->repositoryIdentifier;
     }
 
