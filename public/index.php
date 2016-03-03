@@ -8,8 +8,11 @@ chdir(dirname(__DIR__));
  * Display all errors when APPLICATION_ENV is development.
  */
 if ('development' === $_SERVER['APPLICATION_ENV']) {
+
+	//@todo deprecated messages from this motherfucking zfuser!
 	error_reporting(E_ALL);
-	ini_set("display_errors", 1);
+	#error_reporting(0);
+#	ini_set("display_errors", 1);
 	define('REQUEST_MICROTIME', microtime(true));
 }
 
