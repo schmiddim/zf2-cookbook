@@ -1,0 +1,7 @@
+#!/bin/bash
+
+folder='dev-assets/db-snapshots'
+timestamp=$(date +%s)
+filename="${folder}/${timestamp}.sql"
+
+mysqldump -u root -p1q2w3e4r  zf2-cooking > $filename
