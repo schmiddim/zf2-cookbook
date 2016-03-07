@@ -56,3 +56,4 @@ vendor/
 # composer.lock
 
 data/DoctrineORMModule
+dev-assets/db-snapshots/

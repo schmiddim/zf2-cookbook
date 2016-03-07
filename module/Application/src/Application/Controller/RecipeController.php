@@ -8,6 +8,7 @@ use Recipe\Doctrine\Model\Recipe;
 use Recipe\Service\RecipeServiceInterface;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use ZfcUser\Controller\UserController;
 
 class RecipeController extends AbstractActionController
 {
@@ -37,5 +38,22 @@ class RecipeController extends AbstractActionController
         $recipeService = $this->getServiceLocator()->get(\Recipe\Doctrine\Service\RecipeServiceInterface::class);
 
         return new ViewModel(array('recipes' => $recipeService->findAll()));
+    }
+
+    public function createAction()
+    {
+        if (!$this->zfcUserAuthentication()->hasIdentity()) {
+            return $this->redirect()->toRoute(UserController::ROUTE_LOGIN);
+        }
+        /*
+        if(! $this->zfcUserAuthentication()->hasIdentity()) {
+            return $this->redirect()->toRoute(UserController::ROUTE_LOGIN
+            .'?redirect=' . rawurlencode($this->url(null))
+            );
+        }*/
+
+
+        return new ViewModel(array('recipes' => null));
+
     }
 }
