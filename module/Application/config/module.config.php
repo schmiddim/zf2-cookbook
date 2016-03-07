@@ -12,6 +12,72 @@ namespace Application;
 return array(
     'router' => array(
         'routes' => array(
+
+            'users' => array(
+                'type' => 'Literal',
+                'priority' => 1000,
+                'options' => array(
+                    'route' => '/users',
+                    'defaults' => array(
+                        'controller' => 'user',
+                        'action' => 'list',
+                    ),
+                ),
+            ),
+            'recipe' => array(
+                'type' => 'Literal',
+                'priority' => 1000,
+                'options' => array(
+                    'route' => '/recipe',
+                    'defaults' => array(
+                        'controller' => 'recipe',
+                        'action' => 'index',
+                    ),
+                ),
+                'may_terminate' => true,
+                'child_routes' => array(
+                    'list' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/list',
+                            'defaults' => array(
+                                'controller' => 'recipe',
+                                'action' => 'list',
+                            )
+                        )
+                    ),
+                    'show' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/show/:id',
+                            'defaults' => array(
+                                'controller' => 'recipe',
+                                'action' => 'show',
+                            )
+                        )
+                    ),
+                    'create' => array(
+                        'type' => 'Literal',
+                        'options' => array(
+                            'route' => '/create',
+                            'defaults' => array(
+                                'controller' => 'recipe',
+                                'action' => 'create',
+                            )
+                        )
+                    ),
+                    'update' => array(
+                        'type' => 'Segment',
+                        'options' => array(
+                            'route' => '/update/:id',
+                            'defaults' => array(
+                                'controller' => 'recipe',
+                                'action' => 'create',
+                            )
+                        )
+                    ),
+                ),
+            ),
             'home' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
@@ -26,7 +92,7 @@ return array(
             // new controllers and actions without needing to create a new
             // module. Simply drop new controllers in, and you can access them
             // using the path /application/:controller/:action
-            'application' => array(
+          /*  'application' => array(
                 'type' => 'segment',
                 'options' => array(
                     'route' => '[/:controller[/:action[/:id]]]',
@@ -41,7 +107,7 @@ return array(
                         'page' => '1',
                     ),
                 ),
-            ),
+            ),*/
         ),
     ),
     'service_manager' => array(
@@ -99,8 +165,8 @@ return array(
             'recipeList' => array(
                 'type' => 'mvc',
                 'order' => 800,
-                'label' => 'List of  my awesome Recipes',
-                'route' => 'application',
+                'label' => 'List of  awesome Recipes',
+                'route' => 'recipe/list',
                 'controller' => 'recipe',
                 'action' => 'list',
             ),
@@ -108,7 +174,7 @@ return array(
                 'type' => 'mvc',
                 'order' => '900',
                 'label' => 'List of Users',
-                'route' => 'application',
+                'route' => 'users',
                 'controller' => 'user',
                 'action' => 'list',
             ),
