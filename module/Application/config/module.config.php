@@ -178,6 +178,14 @@ return array(
                 'controller' => 'user',
                 'action' => 'list',
             ),
+            'create' => array(
+                'type' => 'mvc',
+                'order' => 1100,
+                'label' => 'Create Recipe',
+                'route' => 'recipe/create',
+                'controller' => 'recipe',
+                'action' => 'create',
+            ),
         ),
     ),
 );

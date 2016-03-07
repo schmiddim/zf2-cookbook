@@ -5,7 +5,6 @@ namespace Application\Controller;
 
 
 use Recipe\Doctrine\Model\Recipe;
-use Recipe\Service\RecipeServiceInterface;
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
 use ZfcUser\Controller\UserController;
